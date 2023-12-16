@@ -1,0 +1,46 @@
+.messages__top{
+    position: sticky;
+    top: 0;
+}
+.messages__top div{
+    display: flex;
+    justify-content: space-between;
+}
+.messages__top div:nth-child(1){
+    padding-top: 2rem;
+}
+.messages__top div:nth-child(2){
+    padding: 0.7rem 0rem;
+}
+.messages__top:nth-child(1){
+    padding: 0.5rem 1rem;
+}
+.messages_top__items{
+    padding: 0.5rem;
+}
+.messages__top:nth-child(1) h3{
+    display: flex;
+    align-items: center;
+}
+.messages__top:nth-child(1) h3 svg{
+    margin-left: 0.3rem;
+}
+.messages_inner__list li{
+    padding: 1rem 0.5rem;
+    display: flex;
+    align-items: stretch;
+}
+.messages_inner__list li .messages__avatar{
+    min-width: 40px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.messages_inner__list li:hover{
+    background: rgba(128, 128, 128, 0.321);
+}
+.messages_inner__list li .user_send__message{
+    padding-right: 0.5rem !important;
+    display: inline-block;
+}

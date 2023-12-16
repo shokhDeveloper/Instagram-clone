@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "email": "shohijahonmusinkulov@gmail.com",
+      "password": "$2a$10$bX5QxsDosEQcY47OvMnFS.uTEY8qRHZv6WHgnEhEzhTxboyBS.Uau",
+      "displayName": "Shohijahon Musinkulov",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocKWbikg1oN6R4knAuTTRhvcVv03RgznSZa05ypFLC_Mlw=s96-c",
+      "date": "11.12.2023, 12:32:20",
+      "id": 1
+    },
+    {
+      "email": "leomessi@gmail.com",
+      "password": "$2a$10$bL6LMNAxpVgn1HrGBg/gaejjA2sGwLnnz3VPMwkWJk.SfgR06Rghy",
+      "displayName": "Lionel Messi",
+      "username": "leomessi",
+      "date": "14.12.2023, 10:40:59",
+      "id": 2
+    },
+    {
+      "email": "abror@gmail.com",
+      "password": "$2a$10$TGqZ1/dpBa5vKlkT5rirz.0TtH5bMMBg.3RqN.x0v4iXlZL6HiIQ6",
+      "displayName": "Abror Ahmedov",
+      "username": "Abrorjon",
+      "date": "14.12.2023, 16:48:26",
+      "id": 3
+    }
+  ],
+  "posts": []
+}

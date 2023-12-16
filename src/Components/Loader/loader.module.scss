@@ -1,0 +1,17 @@
+.instagram__loader{
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.instagram__loader .loader__inner{
+    min-height: 60vh;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.instagram__loader .loader__inner img{
+    margin: 0 auto;
+}

@@ -1,0 +1,73 @@
+.sidebarBack{
+    width: 0%;
+    opacity: 0;
+    transition: 0.5s ease all;
+    
+}
+.sidebarBack--active{
+    opacity: 1;
+    width: 100%;
+    flex: 1;
+    border: 1px solid  rgba(128, 128, 128, 0.263) !important;
+    // border: 1px solid crimson;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.sidebarBack--active *{
+    margin: 0;
+}
+.searchbox_sidebar__top{
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.263);
+    padding: 1rem 0rem;
+}
+.sidebarBack--white{
+    background: #fff;
+}
+.sidebarBack--white *{
+    color: #000;
+}
+.sidebarBack--black{
+    background: #000;
+}
+.sidebarBack--black *{
+    color: #fff;
+}
+.searchbox__sidebar{
+    padding: 0rem 1rem;
+}
+.searchbox_sidebar__search{
+    padding-top: 2.5rem;
+}
+.searchbox_sidebar__search input{
+    color: black;
+}
+.searchbox_sidebar__search input{
+    border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    border: 1px solid transparent !important;    
+    padding: 0.7rem 1rem ;
+    font-size: 18px;
+}
+.searchbox_sidebar__search input::placeholder{
+    font-size: 18px;
+}
+.searchox__inner li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0rem;
+}
+.searchox__inner li div{
+    display: flex;
+    align-items: center;
+}
+.searchox__inner li div div{
+    display: flex;
+    flex-direction: column;
+}
+.searchox__inner li  button{
+    font-size: 20px;
+    background: transparent;
+}

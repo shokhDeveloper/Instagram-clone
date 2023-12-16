@@ -1,0 +1,40 @@
+@use "../../settings/scss/functions.scss";
+.modal__overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    @include functions.flex(center);
+}
+.modal{
+    width: 30%;
+    background: #fff;
+    border-radius: 10px;
+}
+.modal__header{
+    padding: 0.5rem;
+    @include functions.flex(center);
+    position: relative;
+}
+.modal__close{
+    background: crimson;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    font-size: 20px;
+    padding: 0 0.5rem;
+    border-top-right-radius: 10px;
+}
+.modal__body{
+    padding: 0.5rem;
+}
+.modal__body form{
+    width: 70%;
+    margin: 0 auto;
+}
+.modal__body form button{
+    margin-top: 1rem;
+}

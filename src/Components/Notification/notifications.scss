@@ -1,0 +1,35 @@
+.notification{
+    padding: 1rem;
+}
+.notification__top{
+    padding-bottom: 1rem ;
+}
+.notification__top h3{
+    font-size: 25px;
+}
+.notification__infos{
+    padding: 1rem 0rem;
+}
+.notification__infos p{
+    font-weight: 600;
+}
+.notification__item:not(:first-child){
+    padding-top: 1rem ;
+}
+.notification__item{
+    display: flex;
+    align-items: center;
+}
+.notification__inner{
+    padding: 0 1rem;
+}
+.notification__inner{
+    border-top: 1px solid rgba(128, 128, 128, 0.303);
+    padding: 1rem 0rem;
+}
+.notification_inner__list{
+    padding-top: 1rem;
+}
+.notification__item div:nth-child(1) svg{
+    font-size: 1.3em;
+}

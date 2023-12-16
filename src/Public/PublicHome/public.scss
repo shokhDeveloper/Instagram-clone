@@ -1,0 +1,45 @@
+.public__home{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 60vh;
+}
+.public__inner{
+    min-width: 850px;
+    display: flex;
+    align-items: center;
+}
+.public__inner .public__carousel{
+    flex-basis: 50%;
+    min-height: 600px;
+    background-image: url("../../settings/assets/images/home-phones.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain ;
+    overflow: hidden;
+    position: relative;
+}   
+.public__carousel img{
+    position: absolute;
+    right: 2.6rem;
+    top: 1.8rem;
+    transition: 0.5s ease all !important;
+    opacity: 0;      
+}
+.public__carousel .carousel__image{
+    opacity: 1 !important;
+}
+.active__image{
+    animation-name: activeImage;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes activeImage{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
