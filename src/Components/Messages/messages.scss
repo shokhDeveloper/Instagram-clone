@@ -1,6 +1,8 @@
+@use "../../settings/scss/functions.scss";
 .messages__top{
     position: sticky;
     top: 0;
+    z-index: 111;
 }
 .messages__top div{
     display: flex;
@@ -15,9 +17,6 @@
 .messages__top:nth-child(1){
     padding: 0.5rem 1rem;
 }
-.messages_top__items{
-    padding: 0.5rem;
-}
 .messages__top:nth-child(1) h3{
     display: flex;
     align-items: center;
@@ -25,10 +24,15 @@
 .messages__top:nth-child(1) h3 svg{
     margin-left: 0.3rem;
 }
-.messages_inner__list li{
+.messages_inner__list{
+    height: 82.5vh;
+    overflow-y: scroll;
+}
+.messages_inner__list li a{
     padding: 1rem 0.5rem;
     display: flex;
     align-items: stretch;
+    text-decoration: none;
 }
 .messages_inner__list li .messages__avatar{
     min-width: 40px;
@@ -38,9 +42,70 @@
     justify-content: center;
 }
 .messages_inner__list li:hover{
-    background: rgba(128, 128, 128, 0.321);
+    background: rgba(128, 128, 128, 0.321); 
 }
 .messages_inner__list li .user_send__message{
     padding-right: 0.5rem !important;
     display: inline-block;
+}
+.messages_inner__list li div small:nth-child(3){
+    font-size: 12px;
+}
+.message_user__top *{
+    margin: 0;
+    padding: 0;
+}
+.message_user__top{
+    @include functions.flex(space-between);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.341);
+    padding-bottom: 1rem;
+    padding: 1rem ;
+    position: sticky !important;
+    top: 0 !important;
+    padding-top: 1rem
+}
+.message_user__list{
+    @include functions.flex(center);
+}
+.message_user__list li{
+    padding: 0 1rem;
+}
+.message_user__list li a{
+    font-size: 23px;
+}
+.message_user__data{
+    @include functions.flex(center);
+}
+.message_user__data svg{
+    font-size: 1.3em;
+}
+.active_message__link{
+    background: rgba(128, 128, 128, 0.321);
+}
+.message__chat{
+    padding: 1rem;
+    height: 91vh;
+    border: 1px solid red;
+    display: flex;
+    align-items: flex-end;
+    text-align: end;
+    position: relative;
+    
+}
+.message__user{
+    height: 100vh;
+    overflow-y: scroll;
+}
+.message_chat__box{
+    width: 100%;
+}
+.message__form{
+    display: flex;
+    background: red;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.message__form input{
+    flex: 1;
+    padding: 0.5rem 1rem;
 }

@@ -38,6 +38,9 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
+    .textGrey{
+      opacity: 0.5 !important ;
+    }
 `;
 export const GoogleBtn = styled.button.attrs({
   className: "border-transparent",
@@ -146,4 +149,36 @@ export const ButtonBar = styled.button<{darkMode: string, active?: boolean}>`
     opacity: 0.4;
     
   }
+`
+export const ChatBox = styled.div`
+  width: 100%;
+  text-align: center;
+`
+export const ChatText = styled.p<{styledType: string}>`
+  font-size: 13px;  
+  color: ${({styledType}) => styledType === "black" ? "#fff": "#000"};
+`
+export const YourTextbox = styled.div.attrs({
+  className: "your_text__box"
+})`
+  width: 100%;
+  text-align: start !important;
+`
+export const MyTextBox = styled.div.attrs({
+  className: "my_text__box"
+})`
+  width: 100%;
+  text-align: end !important;
+`
+export const YourText = styled.p`
+  padding: 0.5rem;
+  border-radius: 30px;
+  background: rgb(38, 38, 38);
+  display: inline-block;
+`
+export const MyText = styled.p`
+  padding: 0.5rem;
+  border-radius: 30px;
+  background: rgb(55, 151, 240);
+  display: inline-block;
 `

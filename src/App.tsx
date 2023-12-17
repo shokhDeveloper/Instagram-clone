@@ -82,19 +82,21 @@ useEffect(() => {
     let regexNotification = new RegExp("notifications", "gi")
     let regexSearch = new RegExp("search", "gi")
     let regexMessages = new RegExp("messages", "gi")
-    if(pathname.match(regexNotification) || pathname.match(regexSearch) || pathname.match(regexMessages)){
+    let regexMessagesPage = new RegExp("/message-send/", "gi")
+    if(pathname.match(regexNotification) || pathname.match(regexSearch) || pathname.match(regexMessages) || pathname.match(regexMessagesPage)){
       setSidebarActive(true)
     }
     if(pathname.match(regexNotification)){
       dispatch(setNotification(true))
     }else if(pathname.match(regexSearch)){
       dispatch(setSearchBox(true))
-    }else if(pathname.match(regexMessages)){
+    }else if(pathname.match(regexMessages) || pathname.match(regexMessagesPage)){
       dispatch(setMessages(true))
     } else{
       dispatch(setMessages(false))
-      dispatch(setSearchBox(true))
-      dispatch(setNotification(true))
+      dispatch(setSearchBox(false))
+      dispatch(setNotification(false))
+      setSidebarActive(false)
     }
   },[pathname])
   return (

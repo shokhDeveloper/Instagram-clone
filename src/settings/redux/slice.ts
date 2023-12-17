@@ -37,6 +37,9 @@ export interface InitialStateInterface {
   messages: boolean;
   dateMessagesArray: GenericsStore<string[]>;
   wordsMessageArray: GenericsStore<string[]>;
+  userPage: GenericsStore<UserProfileInterface[]>;
+  userMessageIndex: number,
+  userMessageText: string
 }
 const initialState: InitialStateInterface = {
   loader: true,
@@ -61,7 +64,10 @@ const initialState: InitialStateInterface = {
   followers: [],
   messages: false,
   dateMessagesArray: [],
-  wordsMessageArray: []
+  wordsMessageArray: [],
+  userPage: [],
+  userMessageIndex: 0,
+  userMessageText: ""
 };
 export const slice = createSlice({
   name: "instagram",
@@ -133,11 +139,20 @@ export const slice = createSlice({
           arrayMessages[Math.floor(Math.random() * arrayMessages.length)]
         );
           result = [...result, id]
-      });
+      })
       state.dateMessagesArray = result
     },
     setWordsMessageArray(state, action:PayloadAction<number>){
       state.wordsMessageArray = wordsArray.slice(0, action.payload)
+    },
+    setUserPage(state, action:PayloadAction<UserProfileInterface[]>){
+      state.userPage = action.payload
+    },
+    setUserPageIndex(state, action:PayloadAction<number>){
+      state.userMessageIndex = action.payload
+    },
+    setUserMessageText(state, action:PayloadAction<string>){
+      state.userMessageText = action.payload
     }
   },
 });
@@ -158,5 +173,8 @@ export const {
   setFollowers,
   setMessages,
   setDateMessagesArray,
-  setWordsMessageArray
+  setWordsMessageArray,
+  setUserPage,
+  setUserPageIndex,
+  setUserMessageText
 } = slice.actions;

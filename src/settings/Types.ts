@@ -53,3 +53,4 @@ export interface FollowerResponse {
     items: UserProfileInterface[],
     total: number
 }
+export type Time = number | string

@@ -117,7 +117,6 @@ export const Sidebar: React.FC = (): JSX.Element => {
                             </CustomLink>
                         </li>
                         <li className="sidebar__item" onClick={() => {
-                                console.log("ishladi")
                                 dispatch(setSearchBox(false))
                                 dispatch(setNotification(false))
                                 dispatch(setMessages(true))
@@ -194,7 +193,7 @@ export const Sidebar: React.FC = (): JSX.Element => {
                                     <>
                                         <ul className="more__list">
                                             <li className={`${siteColor === "black" ? "more__item" : "more__item more__item--active"}`}>
-                                                <NavLink to={"/settings"} className={`more__link ${siteColor} `}>
+                                                <NavLink  to={"/settings"} className={`more__link ${siteColor} `}>
                                                     <IoIosSettings className={"more__link"} />
                                                     Settings</NavLink>
                                             </li>
