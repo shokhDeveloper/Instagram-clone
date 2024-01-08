@@ -10,5 +10,24 @@
     transition: 0.7s ease all !important;
 }
 .content {
+    // position: relative;
+    border: 1px solid blue;
+}
+.home_page__inner{
+   display: grid;
+   grid-template: repeat(1, auto) / 70% 25%;
+   grid-column-gap: 40px;
+}
+.home_page__data{
+    border: 1px solid red;
+    overflow: hidden;
     position: relative;
+}
+.home_page__data:nth-child(1){
+    border: 1px solid green !important;
+    position: relative !important;
+}
+.home_page__data:nth-child(2) {
+    position: sticky;
+    top: 0;
 }

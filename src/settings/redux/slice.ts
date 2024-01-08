@@ -1,10 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getItem, setItem, wordsArray } from "../utils";
-import { UserGoogle, UserInstagram, UserProfileInterface } from "../Types";
+import { FollowersUser, myMessageInterface, UserGoogle, UserInstagram, UserProfileInterface } from "../Types";
 import Screen from "../assets/images/screenshot3.png";
 import Screen2 from "../assets/images/screenshot1.png";
 import Screen3 from "../assets/images/screenshot2.png";
 import Screen4 from "../assets/images/screenshot4.png";
+import Xayrulla from "../assets/images/Xayrulla.jpg";
+import Messi from "../assets/images/Lionel-Messi-2018.webp";
+import Najot from "../assets/images/Najot.jpg";
+import Epam from "../assets/images/Epam.jpg";
+import Subyektiv from "../assets/images/Subyektiv.jpg";
+import Barcelona from "../assets/images/Barcelona.jpg"
+import Bill from "../assets/images/Bill.jpg";
+import Mark from "../assets/images/Mark.jpg";
+import Saud from "../assets/images/Saud.jpg";
+import Azizbek from "../assets/images/Azizbek.jpg";
 const arrayMessages = Array.from({ length: 4 }, (_, index) =>
   (index + 1).toString().concat(" ч.")
 ).concat(
@@ -37,9 +47,17 @@ export interface InitialStateInterface {
   messages: boolean;
   dateMessagesArray: GenericsStore<string[]>;
   wordsMessageArray: GenericsStore<string[]>;
-  userPage: GenericsStore<UserProfileInterface[]>;
+  userPage: UserProfileInterface[] ,
   userMessageIndex: number,
-  userMessageText: string
+  userMessageText: string,
+  myMessage: myMessageInterface[],
+  deleteMessageId: string,
+  messageUserType: boolean,
+  followingPaginationType: boolean,
+  maxIndex: number,
+  index: number,
+  homePageData: string[],
+  likeDatas: FollowersUser[] | []
 }
 const initialState: InitialStateInterface = {
   loader: true,
@@ -67,7 +85,15 @@ const initialState: InitialStateInterface = {
   wordsMessageArray: [],
   userPage: [],
   userMessageIndex: 0,
-  userMessageText: ""
+  userMessageText: "",
+  myMessage: [{message: "How are you", id: "defaultText"}],
+  deleteMessageId: "",
+  messageUserType: false,
+  followingPaginationType: false,
+  maxIndex: 0,
+  index: 0,
+  homePageData: [Azizbek, Bill,  Epam, Barcelona,  Messi, Mark, Najot, Subyektiv,  Saud,  Xayrulla],
+  likeDatas: getItem("instagram-likes") ? JSON.parse(getItem("instagram-likes")!): []
 };
 export const slice = createSlice({
   name: "instagram",
@@ -121,7 +147,7 @@ export const slice = createSlice({
       let clone: UserProfileInterface[] = JSON.parse(followingClone);
       clone.splice(idx, 1);
       state.following = clone;
-    },
+    }, 
     setNotification(state, action: PayloadAction<boolean>) {
       state.notifications = action.payload;
     },
@@ -153,28 +179,57 @@ export const slice = createSlice({
     },
     setUserMessageText(state, action:PayloadAction<string>){
       state.userMessageText = action.payload
+    },
+    setMyMessage(state, action:PayloadAction<myMessageInterface>){
+      state.myMessage = [...state.myMessage, action.payload]
+    }  ,
+    setDeleteMessage(state, action:PayloadAction<string>){
+      state.myMessage = state.myMessage.filter((item:myMessageInterface) => item.id !== action.payload)
+    },
+    setDeleteId(state, action:PayloadAction<string>){
+      state.deleteMessageId = action.payload 
+    },
+    setMessageUserType(state, action:PayloadAction<boolean>){
+      state.messageUserType = action.payload
+    },
+    setFollowingPagination(state, action:PayloadAction<boolean>){
+      state.followingPaginationType = action.payload
+    },
+    setMaxIndex(state, action:PayloadAction<number>){
+      state.maxIndex = action.payload
+    },
+    setChangeIndex(state, action:PayloadAction<number>){
+      if((state.maxIndex-8) > state.index ){
+        state.index += action.payload
+      }else{
+        state.index = 0
+      }
+    },
+    setChangeDecIndex(state, action:PayloadAction<number>){
+      if(state.index > 8){
+        state.index -= action.payload
+      }else{
+        state.index = (state.maxIndex-8)
+      }
+    },
+    setLike(state, action:PayloadAction<FollowersUser>){
+      if(!state.likeDatas?.length){
+        state.likeDatas = [...state.likeDatas, action.payload]
+      }else{
+        if(!state.likeDatas.some((item:FollowersUser) => item.id === action.payload.id)){
+          state.likeDatas = [...state?.likeDatas, action.payload]
+        }else{
+          state.likeDatas = state.likeDatas
+        }
+      }
+      setItem("instagram-likes", state.likeDatas)
+    },
+    setNotLike(state, action:PayloadAction<FollowersUser>){
+      state.likeDatas = state.likeDatas.filter((item:FollowersUser) => item.id !== action.payload.id)
+      setItem("instagram-likes", state.likeDatas)
     }
   },
 });
 export const Reducer = slice.reducer;
-export const {
-  setToken,
-  setUser,
-  setIncIdx,
-  setOpenLoader,
-  setCloseLoader,
-  setGoogleUser,
-  setInsChangeBg,
-  setMainProfile,
-  setSearchBox,
-  setSearchFollowing,
-  setDelFollower,
-  setNotification,
-  setFollowers,
-  setMessages,
-  setDateMessagesArray,
-  setWordsMessageArray,
-  setUserPage,
-  setUserPageIndex,
-  setUserMessageText
-} = slice.actions;
+export const {setToken, setUser, setIncIdx, setOpenLoader, setCloseLoader, setGoogleUser, setInsChangeBg, setMainProfile, setSearchBox, setSearchFollowing, setDelFollower, setNotification, setFollowers, setMessages, setDateMessagesArray, setWordsMessageArray, setUserPage, setUserPageIndex, setUserMessageText, setMyMessage, setDeleteMessage, setDeleteId, setMessageUserType, setFollowingPagination, setMaxIndex, setChangeIndex, setChangeDecIndex, setLike, setNotLike }
+ = slice.actions;

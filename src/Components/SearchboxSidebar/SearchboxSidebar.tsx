@@ -10,13 +10,13 @@ export const SearchboxSidebar: React.FC = (): JSX.Element => {
     const handleGetfollowing = useCallback(async ():Promise<void> => {
         if(token && !following?.length){
             try{
-                const request = await axios.get("https://instagram-scraper-api2.p.rapidapi.com/v1/following", {
+                const request = await axios.get(process.env.REACT_APP_INSTAGRAM_SERVER + "/following", {
                     params:{
                         username_or_id_or_url: "shokhijakhon_dev"
                     },
                     headers: {
-                        'X-RapidAPI-Key': '746c57da98mshd1b2303ee658df0p1e0c21jsnf5de183f6566',
-                        'X-RapidAPI-Host': 'instagram-scraper-api2.p.rapidapi.com'
+                        'X-RapidAPI-Key':  process.env.REACT_APP_KEY,
+                        'X-RapidAPI-Host': process.env.REACT_APP_HOST
                     }
                 })
                 if(request.status === 200){

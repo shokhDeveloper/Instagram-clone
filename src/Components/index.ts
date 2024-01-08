@@ -7,3 +7,5 @@ export * from "./CustomLink";
 export * from "./SidebarBack";
 export * from "./SearchboxSidebar";
 export * from "./Notification";
+export * from "./Messages";
+export * from "./Like";

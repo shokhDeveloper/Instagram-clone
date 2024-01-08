@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { FollowersUser } from "../Types";
 
 export interface MyContext  {
     modal: boolean,
@@ -18,7 +19,15 @@ export interface MyContext  {
     sidebarActive: boolean,
     setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>,
     sidebarBack: boolean,
-    setSidebarBack: React.Dispatch<React.SetStateAction<boolean>>
+    setSidebarBack: React.Dispatch<React.SetStateAction<boolean>>,
+    sendMessage: boolean,
+    setSendMessage: React.Dispatch<React.SetStateAction<boolean>>
+    editBox: boolean,
+    setEditBox: React.Dispatch<React.SetStateAction<boolean>>,
+    deleteModal: boolean,
+    setDeleteModal: React.Dispatch<React.SetStateAction<boolean>>
+    filterData: FollowersUser[] | null,
+    setFilterData: React.Dispatch<React.SetStateAction<FollowersUser[] | null>>
 }
 export const Context = createContext<MyContext | any | undefined>(null)
 export interface ContextProviderProps  {
@@ -34,10 +43,12 @@ export const ContextProvider:React.FC<ContextProviderProps> = ({children}):JSX.E
     const [darkModeBox, setDarkModeBox] = useState<boolean>(false)
     const [sidebarActive, setSidebarActive] = useState<boolean>(false)
     const [sidebarBack, setSidebarBack] = useState<boolean>(false)
-    
+    const [sendMessage, setSendMessage] = useState<boolean>(false)
+    const [editBox, setEditBox] = useState<boolean>(false)
+    const [deleteModal, setDeleteModal] = useState<boolean>(false)
+    const [filterData, setFilterData] = useState<FollowersUser[] | null>(null)
     const myContextState: MyContext = {
-        modal,
-        setModal,
+        modal, setModal,
         carouselActive,
         setCarouselActive,
         disabledLogin,
@@ -50,11 +61,15 @@ export const ContextProvider:React.FC<ContextProviderProps> = ({children}):JSX.E
         setMoreBar,
         darkModeBox, setDarkModeBox,
         sidebarActive, setSidebarActive,
-        sidebarBack, setSidebarBack
+        sidebarBack, setSidebarBack,
+        sendMessage, setSendMessage,
+        editBox, setEditBox,
+        deleteModal, setDeleteModal,
+        filterData, setFilterData
     }
     return(
         <Context.Provider value={myContextState}>
-            {children}
+            {children}  
         </Context.Provider>
     )
 }

@@ -41,6 +41,32 @@ export const GlobalStyles = createGlobalStyle`
     .textGrey{
       opacity: 0.5 !important ;
     }
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        
+        white-space: nowrap;
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+    }
+    .error{
+      color: crimson;
+    }
+    .like{
+      appearance: none;
+      padding:  1rem;
+      display: inline-block;
+      background-position : center ;
+      background-repeat: no-repeat;
+      background-size: 30px;
+      filter: invert(1);
+    }
+
 `;
 export const GoogleBtn = styled.button.attrs({
   className: "border-transparent",
@@ -64,10 +90,15 @@ export const GoogleBtn = styled.button.attrs({
     opacity: 0.8;
   }
 `;
-export const Input = styled.input<{ styledType: "error" | "" , darkMode?: string }>`
+export const Input = styled.input<{
+  styledType: "error" | "";
+  darkMode?: string;
+}>`
   padding: 0.5rem 1rem;
-  background: ${({darkMode}) => darkMode === "dark" ? "#282828": "#b5b4b470"};
-  color: ${({darkMode}) => darkMode === "dark" ? "#fff": "auto"} !important;
+  background: ${({ darkMode }) =>
+    darkMode === "dark" ? "#282828" : "#b5b4b470"};
+  color: ${({ darkMode }) =>
+    darkMode === "dark" ? "#fff" : "auto"} !important;
   border: ${({ styledType }) =>
     styledType === "error"
       ? "1px solid crimson"
@@ -84,13 +115,17 @@ export const Input = styled.input<{ styledType: "error" | "" , darkMode?: string
   &::placeholder {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif;
-    color: ${({ styledType }) => styledType === "error" ? "crimson" : ""};
+    color: ${({ styledType }) => (styledType === "error" ? "crimson" : "")};
   }
 `;
-export const Button = styled.button.attrs<{ styledDisabled?: boolean }>({
+
+export const Button = styled.button.attrs<{
+  styledDisabled?: boolean;
+  styledType?: "inline" | "block";
+}>({
   className: "border-transparent",
 })`
-  width: 100%;
+  width: ${({ styledType }) => (styledType === "inline" ? "auto" : "100%")};
   padding: 0.5rem 1rem;
   background: rgb(0, 149, 246);
   color: #fff;
@@ -99,6 +134,7 @@ export const Button = styled.button.attrs<{ styledDisabled?: boolean }>({
     Arial, sans-serif;
   font-weight: 700;
   opacity: ${({ styledDisabled }) => (styledDisabled ? 0.5 : 1)};
+  display: ${({ styledType }) => (styledType === "inline" ? "inline" : "auto")};
 `;
 export const FieldFormik = styled(Field)<{ styledType: "error" | "" }>`
   padding: 0.5rem 1rem;
@@ -118,7 +154,7 @@ export const FieldFormik = styled(Field)<{ styledType: "error" | "" }>`
   &::placeholder {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif;
-    color: ${({ styledType }) => styledType === "error" ? "crimson" : ""};
+    color: ${({ styledType }) => (styledType === "error" ? "crimson" : "")};
   }
 `;
 export const Avatar = styled.img`
@@ -134,51 +170,57 @@ export const AvatarText = styled.div<{ styledType?: string }>`
   font-size: 14px;
   display: inline-block;
   margin-right: 0.5rem !important;
-  background: ${({ styledType }) => styledType === "black" ? "white" : "black"};
-  color: ${({ styledType }) => styledType === "black" ? "black !important" : "white !important"};
+  background: ${({ styledType }) =>
+    styledType === "black" ? "white" : "black"};
+  color: ${({ styledType }) =>
+    styledType === "black" ? "black !important" : "white !important"};
 `;
 
-export const ButtonBar = styled.button<{darkMode: string, active?: boolean}>`
-  padding: 0.3rem ;
+export const ButtonBar = styled.button<{ darkMode: string; active?: boolean }>`
+  padding: 0.3rem;
   padding-bottom: 0rem;
-  font-size: ${({active}) => active ? "15px": "20px"};
+  font-size: ${({ active }) => (active ? "15px" : "20px")};
   background: transparent;
-  color: ${({darkMode}) => darkMode === "dark" ? "#fff": "#000" };
-  opacity: ${({active}) => active ? 0.7: 1};
-  &:hover{
+  color: ${({ darkMode }) => (darkMode === "dark" ? "#fff" : "#000")};
+  opacity: ${({ active }) => (active ? 0.7 : 1)};
+  &:hover {
     opacity: 0.4;
-    
   }
-`
+`;
 export const ChatBox = styled.div`
   width: 100%;
   text-align: center;
-`
-export const ChatText = styled.p<{styledType: string}>`
-  font-size: 13px;  
-  color: ${({styledType}) => styledType === "black" ? "#fff": "#000"};
-`
+`;
+export const ChatText = styled.p<{ styledType: string }>`
+  font-size: 13px;
+  color: ${({ styledType }) => (styledType === "black" ? "#fff" : "#000")};
+`;
 export const YourTextbox = styled.div.attrs({
-  className: "your_text__box"
+  className: "your_text__box",
 })`
   width: 100%;
   text-align: start !important;
-`
+`;
 export const MyTextBox = styled.div.attrs({
-  className: "my_text__box"
+  className: "my_text__box",
 })`
   width: 100%;
   text-align: end !important;
-`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
 export const YourText = styled.p`
   padding: 0.5rem;
   border-radius: 30px;
   background: rgb(38, 38, 38);
   display: inline-block;
-`
+`;
 export const MyText = styled.p`
   padding: 0.5rem;
   border-radius: 30px;
   background: rgb(55, 151, 240);
   display: inline-block;
-`
+  z-index: -1;
+`;

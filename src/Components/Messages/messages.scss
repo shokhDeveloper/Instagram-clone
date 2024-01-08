@@ -2,16 +2,16 @@
 .messages__top{
     position: sticky;
     top: 0;
-    z-index: 111;
+    z-index: 111111111 !important;
 }
 .messages__top div{
     display: flex;
     justify-content: space-between;
 }
-.messages__top div:nth-child(1){
+.messages__top .message_top__items{
     padding-top: 2rem;
 }
-.messages__top div:nth-child(2){
+.messages__top .messages_top__infos{
     padding: 0.7rem 0rem;
 }
 .messages__top:nth-child(1){
@@ -82,30 +82,180 @@
 .active_message__link{
     background: rgba(128, 128, 128, 0.321);
 }
-.message__chat{
-    padding: 1rem;
-    height: 91vh;
-    border: 1px solid red;
+.message_chat__box{
+    flex: 1;
+    height: 100%;
     display: flex;
-    align-items: flex-end;
-    text-align: end;
-    position: relative;
-    
+    justify-content: flex-end;    
+    flex-direction: column;
+    box-sizing: border-box !important;
+    max-height: 90vh;
 }
 .message__user{
-    height: 100vh;
+    height: 99.9vh;
     overflow-y: scroll;
+}
+.message__chat{
+    height: 91vh;
+    max-height: 91vh;
 }
 .message_chat__box{
     width: 100%;
+    padding: 1rem;
+    overflow-y: auto;
+    height: 100%;
+    align-items: flex-end;
+    max-height: 100%;
+    display: flex;
 }
 .message__form{
+    width: 100%;
     display: flex;
-    background: red;
+    background:transparent;
     justify-content: space-between;
     align-items: stretch;
+    border-radius: 30px;
+    position: sticky !important;
+    bottom: 0 !important;
 }
 .message__form input{
     flex: 1;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    background: transparent;
+    padding-left: 0.5rem;
+}
+.message__form input::placeholder{
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+.message__form button{
+    background: transparent;
+    font-size: 23px;
+    color: #fff;
+}
+.message__form label{
+    font-size: 30px;
+    height: 100%;
+    display: inline-block;
+}
+.message__form--black{
+    background: black;
+    border: 1px solid #fff;
+}
+.message__form--black *{
+    color: #fff;
+}
+.message__form .submit__btn{
+    font-size: 15px;
+    color: #1877F2;
+    padding: 0.5rem 1.5rem;
+    padding-left: 0.5rem;
+}
+.edit__box{
+    display: none;
+    margin-right: 1rem;
+    padding: 0.2rem;
+}
+.my_text__box:hover .edit__box{
+    display: block !important;
+}
+.edit__btn{
+    padding: 0.5rem;
+    font-size: 20px;
+    border-radius: 50%;
+    background: transparent;   
+}
+.edit_btn--black{
+    color: grey;
+}
+.edit_btn--black:hover{
+    color: #fff;
+}
+.edit_btn--white{
+    color: grey;
+}
+.edit_btn--white:hover{
+    color: black;
+}
+.edit_message__btn{
+    background: transparent;
+}
+.avatar__data{
+    font-size: 50px !important;
+}
+.message_user_chat__data{
+    width: 100%;
+    text-align: center;
+}
+.message_user_chat__data h3{
+    font-size: 25px;
+}
+.message_user_chat__data button.black{
+    background: grey;
+    padding: 0.5rem;
+    border-radius: 15px;
+    font-size: 16px;
+}
+.message_user_chat__data button.white:nth-child(3){
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 15px;
+    font-size: 16px;
+}
+.default__message{
+    height: 100%;
+    @include functions.flex(center);
+    text-align: center;
+}
+.default__message h4{
+    font-size: 25px;
+    margin: 0.5rem;
+}
+.default__message p {
+    color: grey;
+    margin: 1rem;
+}
+.message_top__back{
+    width: 100% !important;
+    height: auto;
+    padding: 0 0.5rem;
+}   
+.message_top__back *{
+    color: #fff;
+}
+.message_top_back__inner{
+    width: 100%;
+    @include functions.flex(space-between);
+}
+.message_top__icon{
+    padding: 1rem;
+    border-radius: 50%;
+    background: grey;
+    margin-right: 0.5rem;
+}
+.message_top_back__inner button{
+    background: transparent;
+    font-size: 20px;
+}
+.message_top_back_icon__inner{
+    @include functions.flex(flex-start)
+}
+.message_top__back:hover{
+    background: rgba(128, 128, 128, 0.321);
+}
+.message__top--active{
+    padding: 0.5rem 0rem !important;
+}
+.message__top--active .message_top__items{
     padding: 0.5rem 1rem;
 }
+.message_back__top{
+    @include functions.flex(flex-start);
+    padding: 0.5rem 0rem;
+}
+.message_back__top button{
+    margin-right: 0.5rem;
+    font-size: 25px;
+    background: transparent;
+}   

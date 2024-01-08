@@ -178,7 +178,9 @@ export const Sidebar: React.FC = (): JSX.Element => {
                     <ul className="sidebar__bottom" >
                         <li className="sidebar__item">
                             <a href="#"
-                                onClick={() => setMoreBar(true)}
+                                onClick={() => {    
+                                    setMoreBar(true)
+                                }}
                                 className={sidebarActive ? `link ${siteColor} sidebar__link_default`: `link ${siteColor} more__link` }
                             >
                                 <GiHamburgerMenu 

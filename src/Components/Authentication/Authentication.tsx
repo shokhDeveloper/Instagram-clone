@@ -76,7 +76,7 @@ export const Authentication: React.FC<AuthenticationProps> = ({ type }): JSX.Ele
     return (
         <>
             <GoogleBtn onClick={handleGoogle}>Continue with Google</GoogleBtn>
-            <Modal modal={googleModal} setModal={setGoogleModal} title="Password" >
+            <Modal modal={googleModal} setModal={setGoogleModal} title="Password" active={true} discription={""} >
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSub}>
                    {({errors, touched }) => (
                      <Form id="form">

@@ -1,0 +1,28 @@
+@use "../../../../../settings/scss/functions.scss";
+.home_data__following{
+    display: flex;
+    justify-content: center;
+}
+.home__following{
+    border: 1px solid red;
+    max-width: 560px;
+    width: 560px;
+}
+.home__following img{
+    width: 100%;
+    height: 600px;
+    object-fit: contain !important;
+    margin: 0;
+    padding: 0;
+}
+.following__top{
+    padding-top: 1rem;
+    @include functions.flex(flex-start);
+    margin-bottom: 0.5rem;
+}
+.following__top small{
+    margin-left: 1rem;
+}
+.following__top h4{
+    margin: 0;
+}
