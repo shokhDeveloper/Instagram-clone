@@ -12,6 +12,7 @@ export const HomePage: React.FC = (): JSX.Element => {
             const request = await axios.get(process.env.REACT_APP_INSTAGRAM_SERVER + "/following")
             if(request.status === 200){
                 const response:FollowerResponse = await request.data
+                console.log(response)
                 return response.items
             }
         }catch(error){

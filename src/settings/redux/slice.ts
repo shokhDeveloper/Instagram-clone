@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getItem, setItem, wordsArray } from "../utils";
-import { FollowersUser, myMessageInterface, UserGoogle, UserInstagram, UserProfileInterface } from "../Types";
+import { FollowersUser, ImageApplication, myMessageInterface, UserGoogle, UserInstagram, UserProfileInterface } from "../Types";
 import Screen from "../assets/images/screenshot3.png";
 import Screen2 from "../assets/images/screenshot1.png";
 import Screen3 from "../assets/images/screenshot2.png";
@@ -56,7 +56,7 @@ export interface InitialStateInterface {
   followingPaginationType: boolean,
   maxIndex: number,
   index: number,
-  homePageData: string[],
+  homePageData: ImageApplication[],
   likeDatas: FollowersUser[] | []
 }
 const initialState: InitialStateInterface = {
@@ -92,7 +92,48 @@ const initialState: InitialStateInterface = {
   followingPaginationType: false,
   maxIndex: 0,
   index: 0,
-  homePageData: [Azizbek, Bill,  Epam, Barcelona,  Messi, Mark, Najot, Subyektiv,  Saud,  Xayrulla],
+  homePageData: [
+    {
+      image: Azizbek,
+      id: "49253566730"
+    },
+    {
+      image: Barcelona,
+      id: ""
+    },
+    {
+      image: Bill,
+      id: ""
+    },
+    {
+      image: Epam,
+      id: "47409206265"
+    },
+    {
+      image: Mark,
+      id: ""
+    },
+    {
+      image: Messi,
+      id: ""
+    },
+    {
+      image: Najot,
+      id: ""
+    },
+    {
+      image: Saud,
+      id: "31786349062"
+    },
+    {
+      image: Xayrulla,
+      id: "2089125940"
+    },
+    {
+      image: Subyektiv,
+      id: "49625015011"
+    }
+  ],
   likeDatas: getItem("instagram-likes") ? JSON.parse(getItem("instagram-likes")!): []
 };
 export const slice = createSlice({

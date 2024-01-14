@@ -26,3 +26,21 @@
 .following__top h4{
     margin: 0;
 }
+.following__bottom{
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-top: 1rem;
+}
+.following__bottom *{
+    transition: 0.2s ease all;
+}
+.following__bottom button{
+    padding: 0;
+    font-size: 25px ;
+    background: transparent;
+    margin-left: 0.5rem;
+}
+.following__bottom button:hover{
+    opacity: .5;
+}

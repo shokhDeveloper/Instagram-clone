@@ -63,10 +63,17 @@ export const GlobalStyles = createGlobalStyle`
       display: inline-block;
       background-position : center ;
       background-repeat: no-repeat;
-      background-size: 30px;
-      filter: invert(1);
+      background-size: 25px;
     }
-
+    .overlay{
+      position: fixed;
+      top: 0;
+      right:0 ;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 222222;
+ }
 `;
 export const GoogleBtn = styled.button.attrs({
   className: "border-transparent",

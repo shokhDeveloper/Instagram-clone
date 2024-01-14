@@ -8,7 +8,7 @@ interface LikeInterface {
     item: FollowersUser
 }
 export const Like:React.FC<LikeInterface> = ({id, item}):JSX.Element => {
-    const {likeDatas}:InitialStateInterface = useSelector(({Reducer}) => Reducer)
+    const {likeDatas, siteColor}:InitialStateInterface = useSelector(({Reducer}) => Reducer)
     const [like, setIncludeLike] = useState<boolean>(false)
     const likeRef = useRef<HTMLInputElement | null>(null)
     const dispatch = useDispatch()
@@ -32,6 +32,6 @@ export const Like:React.FC<LikeInterface> = ({id, item}):JSX.Element => {
         handleIncludeLike()
     },[like, item])
     return(
-        <input type="checkbox" ref={likeRef} defaultChecked={like} checked={like} className="like" style={{backgroundImage: `url(${like ? LikeImage: LikeBack})`, filter: like ? "inherit": "invert(1)"}} onChange={(event:ChangeEvent<HTMLInputElement>) => handleChange(event)} />
+        <input type="checkbox" ref={likeRef} defaultChecked={like} checked={like} className="like" style={{backgroundImage: `url(${like ? LikeImage: LikeBack})`, filter: !like && siteColor === "black" ? "invert(1)": "inherit"}} onChange={(event:ChangeEvent<HTMLInputElement>) => handleChange(event)} />
     )
 }

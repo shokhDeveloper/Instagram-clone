@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import { FollowersUser } from "../Types";
-
+type optionalGeneric<T> = T | undefined
 export interface MyContext  {
     modal: boolean,
     setModal: React.Dispatch<React.SetStateAction<boolean>>,
@@ -28,6 +28,10 @@ export interface MyContext  {
     setDeleteModal: React.Dispatch<React.SetStateAction<boolean>>
     filterData: FollowersUser[] | null,
     setFilterData: React.Dispatch<React.SetStateAction<FollowersUser[] | null>>
+    comment:boolean,
+    setComment: React.Dispatch<React.SetStateAction<boolean>>
+    commentId: string | null,
+    setCommentId: React.Dispatch<React.SetStateAction<string | null >>
 }
 export const Context = createContext<MyContext | any | undefined>(null)
 export interface ContextProviderProps  {
@@ -47,6 +51,8 @@ export const ContextProvider:React.FC<ContextProviderProps> = ({children}):JSX.E
     const [editBox, setEditBox] = useState<boolean>(false)
     const [deleteModal, setDeleteModal] = useState<boolean>(false)
     const [filterData, setFilterData] = useState<FollowersUser[] | null>(null)
+    const [comment, setComment] = useState<boolean>(false)
+    const [commentId, setCommentId] = useState<string | null>(null)
     const myContextState: MyContext = {
         modal, setModal,
         carouselActive,
@@ -65,7 +71,9 @@ export const ContextProvider:React.FC<ContextProviderProps> = ({children}):JSX.E
         sendMessage, setSendMessage,
         editBox, setEditBox,
         deleteModal, setDeleteModal,
-        filterData, setFilterData
+        filterData, setFilterData,
+        comment, setComment,
+        commentId, setCommentId
     }
     return(
         <Context.Provider value={myContextState}>

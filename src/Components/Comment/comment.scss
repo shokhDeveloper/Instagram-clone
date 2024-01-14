@@ -1,0 +1,56 @@
+@use "../../settings/scss/functions.scss";
+.comment__overlay{
+    @include functions.flex(center);
+}
+.comment__x{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    font-size: 30px;
+    padding: 0 1rem;    
+    color: #fff
+}
+.comment__inner{
+    width: 70%;
+    @include functions.flex(center);
+    align-items: stretch;
+    animation-name: commentAnimation;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    transform: translateY(0px);
+    border: 1px solid green;
+}
+@keyframes commentAnimation{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+.comment__inner div{
+    border: 1px solid #fff;
+    flex-basis: 50%;
+}
+.comment__inner div:nth-child(2){
+    border: 1px solid red ;
+}
+.comment__box--black{
+    background-color: black;
+    padding: 1rem;
+    padding-top: 3rem;
+}
+.comment__box--white{
+    background-color: white;
+    padding: 1rem;
+    padding-top: 2rem;
+}
+.comment__chat--black{
+    background-color: black;
+}
+.comment__chat--white{
+    background-color: white;
+}

@@ -61,3 +61,8 @@ export interface myMessageInterface {
 export interface RenderFollowingInterface {
     data: FollowersUser[] | undefined
 }
+type ImageApplicationType<T> = T | null
+export interface ImageApplication {
+    image?: string,
+    id?: string
+}
