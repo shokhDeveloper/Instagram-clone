@@ -74,6 +74,16 @@ export const GlobalStyles = createGlobalStyle`
       background: rgba(0, 0, 0, 0.4);
       z-index: 222222;
  }
+      .save{
+        appearance: none;
+        width: 40px;
+        height: 50px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+}
 `;
 export const GoogleBtn = styled.button.attrs({
   className: "border-transparent",

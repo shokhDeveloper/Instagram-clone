@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getItem, setItem, wordsArray } from "../utils";
-import { FollowersUser, ImageApplication, myMessageInterface, UserGoogle, UserInstagram, UserProfileInterface } from "../Types";
+import { CommentProps, FollowersUser, ImageApplication, myMessageInterface, UserGoogle, UserInstagram, UserProfileInterface } from "../Types";
 import Screen from "../assets/images/screenshot3.png";
 import Screen2 from "../assets/images/screenshot1.png";
 import Screen3 from "../assets/images/screenshot2.png";
@@ -30,7 +30,8 @@ let googleUser: UserGoogle = {
   photoURL: null,
   password: null,
 };
-type GenericsStore<T> = T | null;
+type GenericsStore<T> = T | null ;
+type GenericsJson<T> = T | [] ;
 export interface InitialStateInterface {
   siteColor: GenericsStore<string>;
   loader: boolean;
@@ -57,7 +58,9 @@ export interface InitialStateInterface {
   maxIndex: number,
   index: number,
   homePageData: ImageApplication[],
-  likeDatas: FollowersUser[] | []
+  likeDatas: FollowersUser[] | [],
+  saveDatas: FollowersUser[] | [],
+  comments: GenericsJson<CommentProps[]>
 }
 const initialState: InitialStateInterface = {
   loader: true,
@@ -134,7 +137,9 @@ const initialState: InitialStateInterface = {
       id: "49625015011"
     }
   ],
-  likeDatas: getItem("instagram-likes") ? JSON.parse(getItem("instagram-likes")!): []
+  likeDatas: getItem("instagram-likes") ? JSON.parse(getItem("instagram-likes")!): [],
+  saveDatas: getItem("instagram-saves") ? JSON.parse(getItem("instagram-saves")!): [],
+  comments: []
 };
 export const slice = createSlice({
   name: "instagram",
@@ -268,9 +273,31 @@ export const slice = createSlice({
     setNotLike(state, action:PayloadAction<FollowersUser>){
       state.likeDatas = state.likeDatas.filter((item:FollowersUser) => item.id !== action.payload.id)
       setItem("instagram-likes", state.likeDatas)
+    },
+    setSave(state, action:PayloadAction<FollowersUser>){
+      if(!state.saveDatas.length){
+        state.saveDatas = [...state.saveDatas, action.payload]
+      } else{
+        if(!state.saveDatas?.some((item:FollowersUser) => item.id === action.payload.id)){
+          state.saveDatas = [...state.saveDatas, action.payload]
+        }else{
+          state.saveDatas = state.saveDatas
+        }
+      }
+      setItem("instagram-saves", state.saveDatas)
+    },
+    setNotSave(state, action:PayloadAction<FollowersUser>){
+      state.saveDatas = state.saveDatas.filter((item:FollowersUser) => item.id !== action.payload.id)
+      setItem("instagram-saves", state.saveDatas)
+    },
+    setAddComment(state, action:PayloadAction<CommentProps>){
+      state.comments = [...state.comments, action.payload]
+    },
+    setCleanComment(state, action:PayloadAction<[]>){
+      state.comments = action.payload
     }
   },
 });
 export const Reducer = slice.reducer;
-export const {setToken, setUser, setIncIdx, setOpenLoader, setCloseLoader, setGoogleUser, setInsChangeBg, setMainProfile, setSearchBox, setSearchFollowing, setDelFollower, setNotification, setFollowers, setMessages, setDateMessagesArray, setWordsMessageArray, setUserPage, setUserPageIndex, setUserMessageText, setMyMessage, setDeleteMessage, setDeleteId, setMessageUserType, setFollowingPagination, setMaxIndex, setChangeIndex, setChangeDecIndex, setLike, setNotLike }
+export const {setToken, setUser, setIncIdx, setOpenLoader, setCloseLoader, setGoogleUser, setInsChangeBg, setMainProfile, setSearchBox, setSearchFollowing, setDelFollower, setNotification, setFollowers, setMessages, setDateMessagesArray, setWordsMessageArray, setUserPage, setUserPageIndex, setUserMessageText, setMyMessage, setDeleteMessage, setDeleteId, setMessageUserType, setFollowingPagination, setMaxIndex, setChangeIndex, setChangeDecIndex, setLike, setNotLike, setSave, setNotSave, setAddComment, setCleanComment }
  = slice.actions;

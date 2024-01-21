@@ -1,56 +1,145 @@
 @use "../../settings/scss/functions.scss";
-.comment__overlay{
-    @include functions.flex(center);
+.comment__overlay {
+  @include functions.flex(center);
 }
-.comment__x{
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 1rem;
-    font-size: 30px;
-    padding: 0 1rem;    
-    color: #fff
+.comment__x {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  font-size: 30px;
+  padding: 0 1rem;
+  color: #fff;
 }
-.comment__inner{
-    width: 70%;
-    @include functions.flex(center);
-    align-items: stretch;
-    animation-name: commentAnimation;
-    animation-duration: 0.5s;
-    animation-iteration-count: 1;
+.comment__inner {
+  width: 70%;
+  @include functions.flex(center);
+  align-items: stretch;
+  animation-name: commentAnimation;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  transform: translateY(0px);
+}
+@keyframes commentAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
     transform: translateY(0px);
-    border: 1px solid green;
+  }
 }
-@keyframes commentAnimation{
-    from{
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0px);
-    }
+.comment__inner .comment__box,
+.comment__inner .comment__chat {
+  flex-basis: 50%;
 }
-.comment__inner div{
-    border: 1px solid #fff;
-    flex-basis: 50%;
+
+.comment__box--black {
+  background-color: black;
+  padding: 1rem;
+  padding-top: 3rem;
 }
-.comment__inner div:nth-child(2){
-    border: 1px solid red ;
+.comment__box--white {
+  background-color: white;
+  padding: 1rem;
+  padding-top: 2rem;
 }
-.comment__box--black{
-    background-color: black;
-    padding: 1rem;
-    padding-top: 3rem;
+.comment__chat--black {
+  background-color: black;
 }
-.comment__box--white{
-    background-color: white;
-    padding: 1rem;
-    padding-top: 2rem;
+.comment__chat--white {
+  background-color: white;
 }
-.comment__chat--black{
-    background-color: black;
+.comment_chat__user {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
-.comment__chat--white{
-    background-color: white;
+.comment_chat_top__data p {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 0.2rem;
+}
+.comment_chat__top {
+  padding: 0.3rem;
+  position: sticky;
+  top: 0;
+}
+.comment_chat__bottom {
+  height: 490px;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.comment_chat__elements {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.comment_chat__user {
+  padding: 0rem 1rem;
+}
+.save {
+  position: relative;
+  top: 0.5rem;
+}
+.comment_chat__form--box h4 {
+  margin: 0;
+  margin: 0.3rem 0rem;
+}
+.comment_chat__form--box .textGrey {
+  color: grey;
+  font-size: 1rem;
+}
+.comment_chat__form {
+    margin: 0.5rem 0rem;
+  display: flex;
+  align-items: center;
+}
+.comment_chat__form input {
+  display: inline-block;
+  background: transparent;
+  width: 100%;
+  padding: 0.5rem ;
+}
+.comment_chat__form input::placeholder{
+    letter-spacing: 1px;
+}
+.comment_chat__form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.comment_chat__submit{
+   background: transparent; 
+   font-size: 14px  !important;
+    letter-spacing: 1px;
+    color: grey !important;
+}
+.comment_chat__top--black{
+    background: black;
+}
+.comment_chat__top--white{
+    background: #fff;
+}
+.comment_chat__userData{
+    display: flex;
+    align-items: center;
+}
+.comments{
+    display: flex;
+    align-items: center;
+    padding: 0rem 0.5rem;   
+}
+.comments:nth-child(1){
+    margin-top: 0.5rem ;
+}
+.comment_chat__top{
+    padding: 1rem 0rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.493);
+}
+.comment_chat__form--box{
+    border-top: 1px solid rgba(128, 128, 128, 0.493);
 }

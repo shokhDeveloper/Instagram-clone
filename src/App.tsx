@@ -53,7 +53,6 @@ function App() {
             'X-RapidAPI-Host': process.env.REACT_APP_HOST
           }
         })
-        console.log(request)
         if (request?.status === 200) {
           const response: FollowerResponse = await request.data.data
           if (response?.items) {

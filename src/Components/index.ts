@@ -10,3 +10,4 @@ export * from "./Notification";
 export * from "./Messages";
 export * from "./Like";
 export * from "./Comment";
+export * from "./Save";

@@ -66,3 +66,8 @@ export interface ImageApplication {
     image?: string,
     id?: string
 }
+export interface CommentProps {
+    name: string,
+    id: string
+}
+export type ChangableValue<T> = T | null | undefined;

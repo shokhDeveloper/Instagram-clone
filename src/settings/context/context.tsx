@@ -31,7 +31,9 @@ export interface MyContext  {
     comment:boolean,
     setComment: React.Dispatch<React.SetStateAction<boolean>>
     commentId: string | null,
-    setCommentId: React.Dispatch<React.SetStateAction<string | null >>
+    setCommentId: React.Dispatch<React.SetStateAction<string | null >>,
+    save: boolean,
+    setSaveData: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const Context = createContext<MyContext | any | undefined>(null)
 export interface ContextProviderProps  {
@@ -53,6 +55,7 @@ export const ContextProvider:React.FC<ContextProviderProps> = ({children}):JSX.E
     const [filterData, setFilterData] = useState<FollowersUser[] | null>(null)
     const [comment, setComment] = useState<boolean>(false)
     const [commentId, setCommentId] = useState<string | null>(null)
+    const [save, setSaveData] = useState<boolean>(false)
     const myContextState: MyContext = {
         modal, setModal,
         carouselActive,
@@ -73,7 +76,8 @@ export const ContextProvider:React.FC<ContextProviderProps> = ({children}):JSX.E
         deleteModal, setDeleteModal,
         filterData, setFilterData,
         comment, setComment,
-        commentId, setCommentId
+        commentId, setCommentId,
+        save, setSaveData
     }
     return(
         <Context.Provider value={myContextState}>
